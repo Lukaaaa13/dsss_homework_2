@@ -4,8 +4,17 @@ import random
 
 def make_random_number(min, max):
     """
-    Random integer.
+    Returns a random integer bigger than min and smaller than max.
+    
+    Args:
+        min (any number format): minimal value
+        max (any number format): maximal value
+        
+    Returns:
+        int: a random integer bigger than min and smaller than max
     """
+    min, max = int(min), int(max)
+    
     return random.randint(min, max)
 
 
