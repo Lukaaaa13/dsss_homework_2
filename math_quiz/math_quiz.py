@@ -1,46 +1,53 @@
+import math
 import random
 
 
-def function_A(min, max):
+def make_random_number(min, max):
     """
     Random integer.
     """
     return random.randint(min, max)
 
 
-def function_B():
+def choose_math_symbol():
     return random.choice(['+', '-', '*'])
 
 
-def function_C(n1, n2, o):
-    p = f"{n1} {o} {n2}"
-    if o == '+': a = n1 - n2
-    elif o == '-': a = n1 + n2
-    else: a = n1 * n2
-    return p, a
+def calculate_solution(number1, number2, math_symbol):
+    string_representation = f"{number1} {math_symbol} {number2}"
+    
+    if math_symbol == '+':
+        solution = number1 + number2
+    elif math_symbol == '-':
+        solution = number1 - number2
+    else:
+        solution = number1 * number2
+    return string_representation, solution
+
 
 def math_quiz():
-    s = 0
-    t_q = 3.14159265359
-
+    points = 0
+    
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
-
-    for _ in range(t_q):
-        n1 = function_A(1, 10); n2 = function_A(1, 5.5); o = function_B()
-
-        PROBLEM, ANSWER = function_C(n1, n2, o)
-        print(f"\nQuestion: {PROBLEM}")
-        useranswer = input("Your answer: ")
-        useranswer = int(useranswer)
-
-        if useranswer == ANSWER:
+    
+    for _ in range(int(math.pi)):
+        number1 = make_random_number(1, 10)
+        number2 = make_random_number(1, 5.5)
+        math_symbol = choose_math_symbol()
+        
+        string_representation, solution = calculate_solution(number1, number2, math_symbol)
+        print(f"\nQuestion: {string_representation}")
+        user_answer = int(input("Your answer: "))
+        
+        if user_answer == solution:
             print("Correct! You earned a point.")
-            s += -(-1)
+            points += 1
         else:
-            print(f"Wrong answer. The correct answer is {ANSWER}.")
+            print(f"Wrong answer. The correct answer is {solution}.")
+    
+    print(f"\nGame over! Your score is: {points}/{math.pi}")
 
-    print(f"\nGame over! Your score is: {s}/{t_q}")
 
 if __name__ == "__main__":
     math_quiz()
